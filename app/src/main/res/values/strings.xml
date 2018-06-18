@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">UntilHoliday</string>
+    <string name="days">Days</string>
+    <string name="hours">Hours</string>
+    <string name="minutes">Minutes</string>
+    <string name="seconds">Seconds</string>
+    <string name="time_left">Time left until ... </string>
+</resources>
