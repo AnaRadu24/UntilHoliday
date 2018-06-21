@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        Button mStartBtn;
+        /*Button mStartBtn;
         mStartBtn = (Button) findViewById(R.id.button_start);
         mStartBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,8 +56,10 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, HolidayCountdown.class);
                 startActivityForResult(intent, 1);
             }
-        });
-
+        });*/
     }
-
+    public void OpenHolidayCountdownActivity(View v){
+        Intent intent = new Intent(MainActivity.this, HolidayCountdown.class);
+        startActivity(intent);
+    }
 }
