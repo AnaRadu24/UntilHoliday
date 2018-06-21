@@ -1,42 +1,89 @@
 package com.anamradu.untilholiday;
 
+import android.app.Activity;
+import android.content.ClipData;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class HolidaysList extends AppCompatActivity {
 
-    private ListView listView;
-    private CustomAdapter mAdapter;
+    public void OpenAddHolidayActivity(View view) {
+        Intent intent = new Intent(HolidaysList.this, AddHoliday.class);
+        startActivity(intent);
+    }
+
+    ListView mHolidayList = null;
+    List<String> adapterList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_holidays_list);
 
-        listView = (ListView) findViewById(R.id.holidays_list);
-        ArrayList<DataModel> holidaysList = new ArrayList<>();
-        holidaysList.add(new DataModel(R.drawable.god_good_job, "My Brithday" , "2018-06-24"));
-        holidaysList.add(new DataModel(R.drawable.girl_good_job,"St. Maria","2018-08-15"));
-        holidaysList.add(new DataModel(R.drawable.buddha_good_job,"St. Andrew","2018-11-31"));
-        holidaysList.add(new DataModel(R.drawable.god_good_job,"National Day","2018-12-01"));
-        holidaysList.add(new DataModel(R.drawable.god_good_job,"Christmas","2018-08-15"));
-        holidaysList.add(new DataModel(R.drawable.god_good_job,"New Year","2019-01-01"));
-        holidaysList.add(new DataModel(R.drawable.god_good_job,"National Unification Day","2019-01-24"));
-        holidaysList.add(new DataModel(R.drawable.buddha_good_job,"Easter","2019-04-08"));
-        holidaysList.add(new DataModel(R.drawable.boy_good_job,"Work Day","2019-05-01"));
-        holidaysList.add(new DataModel(R.drawable.buddha_good_job,"Rusalii","2019-05-28"));
-        holidaysList.add(new DataModel(R.drawable.girl_good_job,"Child's Day","2019-06-01"));
+        mHolidayList = findViewById(R.id.listView_holidays);
+        adapterList = new ArrayList<>();
+        final ArrayList<HolidayItem> holidayList = null;
+        if(holidayList != null) {
+            for (HolidayItem item : holidayList) {
+                adapterList.add(item.name + " " + item.date);
+            }
+        }
+        final ArrayAdapter<String> adapter = new ArrayAdapter<>(HolidaysList.this,
+                R.layout.list_item, R.id.textView_Holiday, adapterList);
+        mHolidayList.setAdapter(adapter);
+        mHolidayList.setOnItemClickListener(listOnItemClickListener);
+        mHolidayList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
 
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
-        mAdapter = new CustomAdapter(this,holidaysList);
-        listView.setAdapter(mAdapter);
+                adapterList.remove(view);
+                holidayList.remove(position);
+                adapter.notifyDataSetChanged();
 
+                return true;
+            }
+        });
     }
+
+    AdapterView.OnItemClickListener listOnItemClickListener = new AdapterView.OnItemClickListener(){
+
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            Date currentDate = new Date();
+            String stringDate = ((HolidayItem)(parent.getItemAtPosition(position))).date;
+            Date eventDate = null;
+            try {
+                eventDate = new SimpleDateFormat("yyyy-MM-dd").parse(stringDate);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            long timeLeft = (eventDate.getTime() - currentDate.getTime())/(24*60*60*1000);
+            Toast.makeText(HolidaysList.this, timeLeft + " more days until " +
+                            ((HolidayItem)(parent.getItemAtPosition(position))).date,
+                    Toast.LENGTH_SHORT).show();
+        }
+    };
 }

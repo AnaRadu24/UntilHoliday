@@ -5,9 +5,46 @@
     android:layout_height="match_parent"
     tools:context="com.anamradu.untilholiday.HolidaysList">
 
-    <ListView
-        android:id="@+id/holidays_list"
+    <LinearLayout
+        android:id="@+id/pane"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_margin="4dp"
+        android:background="@android:color/background_light"
+        android:orientation="vertical" >
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="186dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/god_good_job" />
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                android:background="@drawable/buddha_good_job" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/add_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:onClick="OpenAddHolidayActivity"
+            android:text="Add Holiday"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold" />
+
+        <ListView
+            android:id="@+id/listView_holidays"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 </LinearLayout>

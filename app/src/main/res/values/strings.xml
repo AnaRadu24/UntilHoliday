@@ -5,4 +5,5 @@
     <string name="minutes">Minutes</string>
     <string name="seconds">Seconds</string>
     <string name="time_left">Time left until ... </string>
+    <string name="title_activity_holiday_list">HolidayList</string>
 </resources>

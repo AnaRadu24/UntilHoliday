@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HolidaysList"></activity>
+        <activity android:name=".HolidaysList" />
+        <activity android:name=".AddHoliday" />
     </application>
 
 </manifest>

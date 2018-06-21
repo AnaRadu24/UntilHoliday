@@ -1,5 +1,6 @@
 package com.anamradu.untilholiday;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,7 +8,9 @@ import android.view.View;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
                     handler.postDelayed(this, 1000);
                     try {
                         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                        // Please here set your event date//YYYY-MM-DD
-                        Date futureDate = dateFormat.parse("2018-06-24");
+                        HolidayItem item = AddHoliday.holidayList.get(0);
+                        Date futureDate = dateFormat.parse(item.date);
                         Date currentDate = new Date();
                         if (!currentDate.after(futureDate)) {
                             long diff = futureDate.getTime() - currentDate.getTime();
@@ -72,5 +75,9 @@ public class MainActivity extends AppCompatActivity {
             findViewById(R.id.LinearLayout2).setVisibility(View.GONE);
             findViewById(R.id.LinearLayout3).setVisibility(View.GONE);
             findViewById(R.id.LinearLayout4).setVisibility(View.GONE);
+        }
+        public void OpenHolidaysListActivity(View v){
+            Intent intent = new Intent(MainActivity.this, HolidaysList.class);
+            startActivity(intent);
         }
 }
