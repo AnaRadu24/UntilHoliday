@@ -8,212 +8,47 @@
     android:background="@color/colorWhite"
     tools:context=".MainActivity">
 
-
     <ImageView
-        android:id="@+id/imageHooray"
+        android:id="@+id/imageView_logo"
         android:layout_width="fill_parent"
-        android:layout_height="300dp"
-        android:background="@drawable/boy_good_job"
-  />
+        android:layout_height="256dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/name_app_logo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textTimeLeft"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:text="@string/time_left"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="32dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="291dp"
-        tools:ignore="MissingConstraints" />
-
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textTimeLeft">
-
-        <LinearLayout
-            android:id="@+id/LinearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:id="@+id/LinearLayout1"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:layout_weight="1"
-                android:background="@drawable/layout_background"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textDaysLeft"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_weight="3"
-                    android:gravity="center"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="64dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/text_days"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:text="@string/days"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@color/colorLight"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/LinearLayout2"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:layout_weight="1"
-                android:background="@drawable/layout_background"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textHoursLeft"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_weight="3"
-                    android:gravity="center"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="64dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/text_hours"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:text="@string/hours"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@color/colorLight"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/LinearLayout3"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:layout_weight="1"
-                android:background="@drawable/layout_background"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textMinutesLeft"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_weight="3"
-                    android:gravity="center"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="64dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/text_minutes"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:text="@string/minutes"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@color/colorLight"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/LinearLayout4"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:layout_weight="1"
-                android:background="@drawable/layout_background"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textSecondsLeft"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_weight="3"
-
-                    android:gravity="center"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="64dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/text_seconds"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:text="@string/seconds"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@color/colorLight"
-                    android:textStyle="bold" />
-            </LinearLayout>
-        </LinearLayout>
-    </RelativeLayout>
-
-    <TextView
-        android:id="@+id/textUpcomingHoliday"
+        android:id="@+id/textView_motto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Holiday"
+        android:text="Know how much is left!"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="32dp"
         android:textStyle="bold"
-        android:textColor="@color/colorAccent"
+        app:layout_constraintBottom_toTopOf="@+id/imageView_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/layout_background"
+        android:text="Start"
+        android:textColor="@color/colorWhite"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
-
-    <Button
-        android:id="@+id/buttonListView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="12dp"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/layout_background"
-        android:onClick="OpenHolidaysListActivity"
-        android:padding="8dp"
-        android:text="View Holiday List"
-        android:textColor="@color/colorLight"
-        android:textSize="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView_logo" />
 
 </android.support.constraint.ConstraintLayout>

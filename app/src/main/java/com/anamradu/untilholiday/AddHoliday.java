@@ -19,8 +19,6 @@ public class AddHoliday extends AppCompatActivity {
     EditText editHolidayDate = null;
     Button mAddHolidayBtn = null;
 
-    public static ArrayList<HolidayItem> holidayList = new ArrayList<>();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,9 +28,6 @@ public class AddHoliday extends AppCompatActivity {
         editHolidayDate = findViewById(R.id.editHolidayDate);
         mAddHolidayBtn = findViewById(R.id.button_add_holiday);
 
-        HolidayItem item = new HolidayItem("Christmas", "2018-12-25");
-        holidayList.add(item);
-
         mAddHolidayBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -41,12 +36,16 @@ public class AddHoliday extends AppCompatActivity {
                     item.name = editHolidayName.getText().toString();
                     item.date = editHolidayDate.getText().toString();
                     HolidayItem currentItem = null;
-                    for(int cnt=0; cnt<holidayList.size(); cnt++) {
-                        currentItem  = holidayList.get(cnt);
+                    for(int cnt=0; cnt<MainActivity.holidayList.size(); cnt++) {
+                        currentItem  = MainActivity.holidayList.get(cnt);
                         if(item.date.compareTo(currentItem.date)>0){
-                            holidayList.add(cnt+1, item);
+                            for(int pos=MainActivity.holidayList.size(); pos>=cnt; pos--){
+                                currentItem  = MainActivity.holidayList.get(pos);
+                                MainActivity.holidayList.add(pos+1, currentItem);
+                            }
+                            MainActivity.holidayList.add(cnt, item);
                             Intent intent = new Intent(AddHoliday.this, HolidaysList.class);
-                            startActivity(intent);
+                            startActivityForResult(intent,1);
                         }
                     }
                 }

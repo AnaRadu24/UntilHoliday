@@ -31,7 +31,7 @@ public class HolidaysList extends AppCompatActivity {
 
     public void OpenAddHolidayActivity(View view) {
         Intent intent = new Intent(HolidaysList.this, AddHoliday.class);
-        startActivity(intent);
+        startActivityForResult(intent,1);
     }
 
     ListView mHolidayList = null;
@@ -41,6 +41,12 @@ public class HolidaysList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_holidays_list);
+
+        try {
+            HolidaysList.RefreshHolidaysList();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
         mHolidayList = findViewById(R.id.listView_holidays);
         adapterList = new ArrayList<>();
@@ -86,4 +92,15 @@ public class HolidaysList extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
         }
     };
+
+    public static void RefreshHolidaysList() throws ParseException {
+        for(int cnt=0; cnt<MainActivity.holidayList.size(); cnt++){
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            Date futureDate = dateFormat.parse(MainActivity.holidayList.get(cnt).date);
+            Date currentDate = new Date();
+            if(currentDate.after(futureDate)){
+                MainActivity.holidayList.remove(cnt);
+            }
+        }
+    }
 }
